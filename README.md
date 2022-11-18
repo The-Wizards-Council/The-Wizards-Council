@@ -36,6 +36,7 @@
 
 # Tier 4 — Authorization
 <details>
+ 
  * As a User, I want my API protected from unauthorized Users
  
  * As an unauthorized User, I want a helpful message telling me I do not have access to the API
