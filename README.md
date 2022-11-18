@@ -1,6 +1,6 @@
 # The-Wizards-Council
 
-# <i class="ri-git-repository-fill"></i> # Tier 1 — MVP Application - CRUD and REST
+# Tier 1 — MVP Application - CRUD and REST
 
 * As a User, I want to read entries from the database 
 * As a User, I want to add entries to the database 
