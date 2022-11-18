@@ -61,6 +61,7 @@
 
 # Tier 6 — Admin vs User
   <details>
+
  * As an Admin, I want to have a special super-user account type that allows access to content Users don’t have access to * 
  
  * As a basic User, when requesting a list of all entries, I expect to only see my own entries (not entries of other users) *
