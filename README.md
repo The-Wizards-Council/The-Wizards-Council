@@ -113,4 +113,5 @@
   * As a returning user, I want to be automatically logged in, instead of having to enter my credentials each time I revisit the application.
 
   * As a User, I want my app to be visually stunning
+ 
 </details>
