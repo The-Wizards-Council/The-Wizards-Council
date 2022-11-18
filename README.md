@@ -1,14 +1,14 @@
 # The-Wizards-Council
 
-# <i class="ri-git-repository-fill"></i> Tier 1 — MVP Application - CRUD and REST
-
+# Tier 1 — MVP Application - CRUD and REST 
+<details>
 * As a User, I want to read entries from the database 
 * As a User, I want to add entries to the database 
 * As a User, I want to delete entries from the database 
 * As a User, I want to edit entries in the database 
 * As a User, I expect to do all of the above by accessing RESTful routes 
 * As a User, I want to log in to a deployed app. Reference the Deployment section for instructions. 
-
+</>
 # <i class="ri-git-repository-fill"></i> Tier 2 - Login, Hashing
 * As a User, I want to be able to log in to my API
 * As a User, I want any passwords saved to be hashed and salted before saved to the database (note: If you use OAuth, you might not even store passwords at all!)
