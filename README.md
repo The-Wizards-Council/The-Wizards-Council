@@ -57,15 +57,15 @@
  
  * As a User, I want to be able to read a single entry
  
- *As a User requesting a single entry, I want to see the associated user info and other associated data. For example, if your API is a concert, instead If just the concert, I want to see who created the concert entry, as well as the associated location data, artist info, and attendees coming to the event.
+ * As a User requesting a single entry, I want to see the associated user info and other associated data. For example, if your API is a concert, instead If just the concert, I want to see who created the concert entry, as well as the associated location data, artist info, and attendees coming to the event.
 </details>
 
 # Tier 6 — Admin vs User
   <details>
 
- * As an Admin, I want to have a special super-user account type that allows access to content Users don’t have access to * 
+ * As an Admin, I want to have a special super-user account type that allows access to content Users don’t have access to  
  
- * As a basic User, when requesting a list of all entries, I expect to only see my own entries (not entries of other users) *
+ * As a basic User, when requesting a list of all entries, I expect to only see my own entries (not entries of other users) 
  
  * As an Admin, when requesting a list of all entries, I expect to be able to see all entries, regardless of user/owner
  
