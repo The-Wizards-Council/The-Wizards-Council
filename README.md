@@ -3,7 +3,7 @@
 # Tier 1 — MVP Application - CRUD and REST 
 <details>
 
-  * As a User, I want to read entries from the database  
+  * <i class="fa-thin fa-check"></i>As a User, I want to read entries from the database  
 
   * As a User, I want to add entries to the database 
 
