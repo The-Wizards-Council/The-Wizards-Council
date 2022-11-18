@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/CodingNerd12/The-Wizards-Council/issues"
   },
-  "homepage": "https://github.com/CodingNerd12/The-Wizards-Council#readme"
+  "homepage": "https://github.com/CodingNerd12/The-Wizards-Council#readme",
+  "dependencies": {
+    "remixicon": "^2.5.0"
+  }
 }
