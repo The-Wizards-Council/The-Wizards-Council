@@ -14,7 +14,8 @@
    ✨ As a User, I expect to do all of the above by accessing RESTful routes 
 
    ✨ As a User, I want to log in to a deployed app.
-         * 🚩 Deployed app <hyperlink> goes here 
+
+         *  🚩 Deployed app <hyperlink> goes here 
 
 </details>
 
