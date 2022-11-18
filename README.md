@@ -1,7 +1,7 @@
 # The Wizards Council
 
 # Tier 1 — MVP Application - CRUD and REST 👨🏽‍💻
-<details [User Story]>
+<details> <i User Story />
 
    ✨ As a User, I want to read entries from the database  
 
