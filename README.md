@@ -2,8 +2,8 @@
 
 # Tier 1 — MVP Application - CRUD and REST 
 <details>
-
-  * <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5z"/></svg> As a User, I want to read entries from the database  
+--
+  * As a User, I want to read entries from the database  
 
   * As a User, I want to add entries to the database 
 
@@ -14,6 +14,7 @@
   * As a User, I expect to do all of the above by accessing RESTful routes 
 
   * As a User, I want to log in to a deployed app. Reference the Deployment section for instructions. 
+--
 </details>
 
   
@@ -50,26 +51,34 @@
 
 # Tier 5 — Associated Data
 <details>
-In addition to the Tier 1 MVP criteria…
-As a User, I want to be able to read a single entry
-As a User requesting a single entry, I want to see the associated user info and other associated data. For example, if your API is a concert, instead If just the concert, I want to see who created the concert entry, as well as the associated location data, artist info, and attendees coming to the event.
+
+ * In addition to the Tier 1 MVP criteria…
+ 
+ * As a User, I want to be able to read a single entry
+ 
+ *As a User requesting a single entry, I want to see the associated user info and other associated data. For example, if your API is a concert, instead If just the concert, I want to see who created the concert entry, as well as the associated location data, artist info, and attendees coming to the event.
 </details>
 
 # Tier 6 — Admin vs User
   <details>
-    * As an Admin, I want to have a special super-user account type that allows access to content Users don’t have access to * 
-    * As a basic User, when requesting a list of all entries, I expect to only see my own entries (not entries of other users) *
-    As an Admin, when requesting a list of all entries, I expect to be able to see all entries, regardless of user/owner
-    As an Admin, I want to be able to edit other users’ information via the API
-    As an Admin, I want to be able to delete or edit any entity, regardless of user/owner
+ * As an Admin, I want to have a special super-user account type that allows access to content Users don’t have access to * 
+ 
+ * As a basic User, when requesting a list of all entries, I expect to only see my own entries (not entries of other users) *
+ 
+ * As an Admin, when requesting a list of all entries, I expect to be able to see all entries, regardless of user/owner
+ 
+ * As an Admin, I want to be able to edit other users’ information via the API
+ 
+ * As an Admin, I want to be able to delete or edit any entity, regardless of user/owner
   </details>
 
 # Bonus Goals
 <details>
+ --
 * Bonus Goal 1: Front End Login
-As a User, I want to be able to use a client-side form to Log in/out of my application.
-As a User, I want to be able to sign up using a client-side form.
-This could be via a traditional web form, or more preferably, with a React app.
+   *** As a User, I want to be able to use a client-side form to Log in/out of my application.
+   *** As a User, I want to be able to sign up using a client-side form. This could be via a traditional web form, or more preferably, with a React app.
+ --
 * Bonus Goal 2: Seed
 As a Developer cloning the repo for the first time, I want to be able to run a seed command and have the database populated with data.
 As a Developer, I want multiple users to be seeded to the database
