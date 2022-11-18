@@ -2,7 +2,7 @@
 
 # Tier 1 — MVP Application - CRUD and REST 
 <details>
---
+
   * As a User, I want to read entries from the database  
 
   * As a User, I want to add entries to the database 
@@ -14,7 +14,7 @@
   * As a User, I expect to do all of the above by accessing RESTful routes 
 
   * As a User, I want to log in to a deployed app. Reference the Deployment section for instructions. 
---
+
 </details>
 
   
@@ -74,34 +74,47 @@
 
 # Bonus Goals
 <details>
- --
+ 
 * Bonus Goal 1: Front End Login
-   *** As a User, I want to be able to use a client-side form to Log in/out of my application.
-   *** As a User, I want to be able to sign up using a client-side form. This could be via a traditional web form, or more preferably, with a React app.
- --
+   * As a User, I want to be able to use a client-side form to Log in/out of my application.
+   * As a User, I want to be able to sign up using a client-side form. This could be via a traditional web form, or more preferably, with a React app.
+ 
 * Bonus Goal 2: Seed
-As a Developer cloning the repo for the first time, I want to be able to run a seed command and have the database populated with data.
-As a Developer, I want multiple users to be seeded to the database
-* Bonus Goal 3: Testing
-As a Developer, I want to be able to run a test commend (such as npm test or the command specific to your technology/project) and have all my tests run.
-As a Developer, I want to know if my new code has broken anything (passing tests means it theoretically didn’t)
-* Bonus Goal 4: Continuous Integration
-As a Developer, I want the tests to run each time I open a PR to the main branch. 
-As a Developer, I want failing tests to block a merge to main
+ 
+  * As a Developer cloning the repo for the first time, I want to be able to run a seed command and have the database populated with data.
+  * As a Developer, I want multiple users to be seeded to the database
+
+ * Bonus Goal 3: Testing
+ 
+  * As a Developer, I want to be able to run a test commend (such as npm test or the command specific to your technology/project) and have all my tests run.
+  * As a Developer, I want to know if my new code has broken anything (passing tests means it theoretically didn’t)
+
+ * Bonus Goal 4: Continuous Integration
+ 
+  * As a Developer, I want the tests to run each time I open a PR to the main branch. 
+  * As a Developer, I want failing tests to block a merge to main
 Note: GitHub Actions or TravisCI are each great options for this.
-* Bonus Goal 5: Pagination
-As a Developer, I want to see many (Hundreds? Thousands?) entries seeded to use in testing. (Use an external package like faker to generate the data)
-As a User requesting all entries, I want to receive paginated data (10 results instead of 5K)
-As a User requesting all entries, I want to be able to request the next “page” or set of data
-As a User requesting all entries, I want to be able to edit the page size (10 results at a time vs 50 or other amount)
+
+ * Bonus Goal 5: Pagination
+ 
+  * As a Developer, I want to see many (Hundreds? Thousands?) entries seeded to use in testing. (Use an external package like faker to generate the data)
+  * As a User requesting all entries, I want to receive paginated data (10 results instead of 5K)
+  * As a User requesting all entries, I want to be able to request the next “page” or set of data
+  * As a User requesting all entries, I want to be able to edit the page size (10 results at a time vs 50 or other amount)
+ 
 * Bonus Goal 6: External API Automation
-You could integrate external API for cool and fun functionality.  Feel free to let your imagination soar!  But here are a couple examples:
-Intermediate - As a User signing up, I want to receive an email confirmation upon registration.  Use something like SendGrid - (100 free emails per day)
-Advanced - As an Admin, I want to receive a daily email report with data about my entities (inventory value, daily throughput, etc).  I expect the report to come in at the same time every day.  You could achieve this by creating an interval-based Cron Job, running on a serverless host like Google Cloud or AWS Lambda.
+
+  * You could integrate external API for cool and fun functionality.  Feel free to let your imagination soar!  But here are a couple examples:
+  * Intermediate - As a User signing up, I want to receive an email confirmation upon registration.  Use something like SendGrid - (100 free emails per day)
+  * Advanced - As an Admin, I want to receive a daily email report with data about my entities (inventory value, daily throughput, etc).  I expect the report to come in at the same time every day.  You could achieve this by creating an interval-based Cron Job, running on a serverless host like Google Cloud or AWS Lambda.
+
 * Bonus Goal 7: Front End Application
-Heads-up, this is a big one!
-Beyond just login…
-As a User, I want to access, create, edit, and delete my data all from a front-end GUI application.
-As a returning user, I want to be automatically logged in, instead of having to enter my credentials each time I revisit the application.
-As a User, I want my app to be visually stunning
+   Heads-up, this is a big one!
+   Beyond just login…
+
+ * As a User, I want to access, create, edit, and delete my data all from a front-end GUI application.
+ 
+ * As a returning user, I want to be automatically logged in, instead of having to enter my credentials each time I revisit the application.
+
+ * As a User, I want my app to be visually stunning
 </details>
