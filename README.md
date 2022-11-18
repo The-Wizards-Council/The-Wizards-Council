@@ -1,6 +1,6 @@
 # The-Wizards-Council
 
-# Tier 1 — MVP Application - CRUD and REST
+# <i class="ri-git-repository-fill"></i> Tier 1 — MVP Application - CRUD and REST
 
 * As a User, I want to read entries from the database 
 * As a User, I want to add entries to the database 
@@ -9,15 +9,15 @@
 * As a User, I expect to do all of the above by accessing RESTful routes 
 * As a User, I want to log in to a deployed app. Reference the Deployment section for instructions. 
 
-# Tier 2 - Login, Hashing
+# <i class="ri-git-repository-fill"></i> Tier 2 - Login, Hashing
 * As a User, I want to be able to log in to my API
 * As a User, I want any passwords saved to be hashed and salted before saved to the database (note: If you use OAuth, you might not even store passwords at all!)
 
-# Tier 3 - Register
+# <i class="ri-git-repository-fill"></i>  Tier 3 - Register
 * As a potential User, I want to be able to sign up for the API
 * As a signed-up User, I want to be granted authorization to access the API
 
-# Tier 4 - Authorization
+# <i class="ri-git-repository-fill"></i>  Tier 4 - Authorization
 
 * As a User, I want my API protected from unauthorized Users
 * As an unauthorized User, I want a helpful message telling me I do not have access to the API
@@ -26,7 +26,7 @@
 * As a User, I want my data to only be accessible by myself
 * As a User, I want my data to only be editable/deletable by myself
 
-# Tier 5 - Associated Data
+# <i class="ri-git-repository-fill"></i>  Tier 5 - Associated Data
 
 In addition to the Tier 1 MVP criteria…
 As a User, I want to be able to read a single entry
