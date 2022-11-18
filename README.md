@@ -3,7 +3,7 @@
 # Tier 1 — MVP Application - CRUD and REST 
 <details>
 
-  * As a User, I want to read entries from the database  
+  * <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h14V5H5z"/></svg> As a User, I want to read entries from the database  
 
   * As a User, I want to add entries to the database 
 
@@ -35,15 +35,20 @@
 
 # Tier 4 — Authorization
 <details>
-  * As a User, I want my API protected from unauthorized Users
-  * As an unauthorized User, I want a helpful message telling me I do not have access to the API
-  * (optional, but recommended): As a user, I want to receive a helpful error message anytime there is a problem with the request (i.e. error handling middleware)
-  * As a User, I expect not to be able to create new entities without first logging in / authenticating in some way (token/session)
-  * As a User, I want my data to only be accessible by myself
-  * As a User, I want my data to only be editable/deletable by myself
+ * As a User, I want my API protected from unauthorized Users
+ 
+ * As an unauthorized User, I want a helpful message telling me I do not have access to the API
+ 
+ * (optional, but recommended): As a user, I want to receive a helpful error message anytime there is a problem with the request (i.e. error handling middleware)
+  
+ * As a User, I expect not to be able to create new entities without first logging in / authenticating in some way (token/session)
+ 
+ * As a User, I want my data to only be accessible by myself
+ 
+ * As a User, I want my data to only be editable/deletable by myself
 </details>
-# Tier 5 — Associated Data
 
+# Tier 5 — Associated Data
 <details>
 In addition to the Tier 1 MVP criteria…
 As a User, I want to be able to read a single entry
