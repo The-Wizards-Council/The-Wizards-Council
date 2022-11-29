@@ -19,6 +19,8 @@
   "homepage": "https://github.com/CodingNerd12/The-Wizards-Council#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "remixicon": "^2.5.0"
+    "remixicon": "^2.5.0",
+    "sequelize": "^6.26.0",
+    "sqlite3": "^5.1.2"
   }
 }
