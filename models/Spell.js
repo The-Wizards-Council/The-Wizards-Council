@@ -8,7 +8,7 @@ const Spell = database.define("spell", {
         primaryKey: true
     },
    
-    item: {
+    spellName: {
         type: Sequelize.STRING,
         allowNull: false
     },
