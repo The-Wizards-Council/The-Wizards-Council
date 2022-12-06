@@ -51,9 +51,37 @@ app.delete("/spells/:id", async (req, res) => {
 // 1. Inheritence
 // Objects have an IS A relationship
 
-// Pokemon IS A type -> /pokemons/types
-// Trainer IS A human -> "/humans/trainers"
-// Dog IS A animal -> "/animals/dogs"
+
+
+
+   //Yohonna: Get routes for spells and wizards  
+
+ //Yohonna: get all wizards
+ app.get("/wizards", async(req, res) => {
+    let wizard = await Wizard.findAll(req.params.id);
+    res.send(wizard)
+});
+
+//Yohonna:get wizards by id 
+   app.get("/wizards/:id", async (req, res) => {
+    console.log(req.params.id)
+    let wizard = await Wizard.findByPk(req.params.id);
+    res.send(wizard)
+});
+
+
+//Yohonna:get spells by id 
+app.get("/spells/:id", async (req, res) => {
+    console.log(req.params.id)
+    let spell = await Spell.findByPk(req.params.id);
+    res.send(spell)
+});
+
+//Yohonna:get all spells 
+app.get("/spells", async(req, res) => {
+    let spell = await Spell.findAll(req.params.id);
+    res.send(spell)
+});
 
 app.listen(port, () => {
   seed();
