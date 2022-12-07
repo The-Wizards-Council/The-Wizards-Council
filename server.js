@@ -15,18 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // POST - INSERT - (Creating a Resource)
 // PUT - UPDATE - (Updating a Resource)
 // DELETE - DELETE - (Deleting a Resource)
-// delete route done by Ahn 12/2/2022
-app.delete("/wizards/:id", async (req, res) => {
-  const wizard = await Wizard.findByPk(req.params.id);
-  const deletedWizard = await wizard.destroy();
-  res.send(deletedWizard);
-});
 
-app.delete("/spells/:id", async (req, res) => {
-  const spell = await Spell.findByPk(req.params.id);
-  const deletedSpell = await spell.destroy();
-  res.send(deletedSpell);
-});
 
 // Noun
 // Pokemons
@@ -50,10 +39,6 @@ app.delete("/spells/:id", async (req, res) => {
 // We learned that with OOP we have the four principles:
 // 1. Inheritence
 // Objects have an IS A relationship
-
-
-
-
    //Yohonna: Get routes for spells and wizards  
 
  //Yohonna: get all wizards
@@ -83,6 +68,40 @@ app.get("/spells", async(req, res) => {
     res.send(spell)
 });
 
+//Kris POST routes
+    //Kris: POST new wizards
+ app.post("/wizards", async(req, res, next) => {
+    
+  try {
+  const wizard = await Wizard.create(req.body);
+  res.send(wizard);
+   } catch (error) {
+  next(error);
+  }
+});
+// Kris: POST new spells 
+app.post("/spells", async(req, res, next) => {
+  try {
+  const spell = await Spell.create(req.body);
+  res.send(spell);
+  } catch (error) {
+  next(error);
+  }
+});
+
+
+// delete route done by Ahn 12/2/2022
+app.delete("/wizards/:id", async (req, res) => {
+  const wizard = await Wizard.findByPk(req.params.id);
+  const deletedWizard = await wizard.destroy();
+  res.send(deletedWizard);
+});
+
+app.delete("/spells/:id", async (req, res) => {
+  const spell = await Spell.findByPk(req.params.id);
+  const deletedSpell = await spell.destroy();
+  res.send(deletedSpell);
+});
 app.listen(port, () => {
   seed();
   console.log(`App listening on http://localhost:${port}`);
