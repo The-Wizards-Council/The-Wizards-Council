@@ -89,6 +89,32 @@ app.post("/spells", async(req, res, next) => {
   }
 });
 
+//Kris: PUT wizards
+// Update a single item to the Wizard and Spell database by id
+app.put("/:id", async (req, res, next) => {
+  try {
+    await Wizard.update(req.body, {
+      where: { id: req.params.id },
+    });
+    let putWizards = await Item.findAll();
+    res.json(putWizards);
+  } catch (error) {
+    next(error);
+  }
+});
+//Kris: PUT Spells
+app.put("/:id", async (req, res, next) => {
+  try {
+    await Spell.update(req.body, {
+      where: { id: req.params.id },
+    });
+    let putSpells = await Item.findAll();
+    res.json(putSpells);
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 // delete route done by Ahn 12/2/2022
 app.delete("/wizards/:id", async (req, res) => {
