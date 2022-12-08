@@ -91,24 +91,24 @@ app.post("/spells", async(req, res, next) => {
 
 //Kris: PUT wizards
 // Update a single item to the Wizard and Spell database by id
-app.put("/:id", async (req, res, next) => {
+app.put("/wizards/:id", async (req, res, next) => {
   try {
     await Wizard.update(req.body, {
       where: { id: req.params.id },
     });
-    let putWizards = await Item.findAll();
+    let putWizards = await Wizard.findAll();
     res.json(putWizards);
   } catch (error) {
     next(error);
   }
 });
 //Kris: PUT Spells
-app.put("/:id", async (req, res, next) => {
+app.put("/spells/:id", async (req, res, next) => {
   try {
     await Spell.update(req.body, {
       where: { id: req.params.id },
     });
-    let putSpells = await Item.findAll();
+    let putSpells = await Spell.findAll();
     res.json(putSpells);
   } catch (error) {
     next(error);
