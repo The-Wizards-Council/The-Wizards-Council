@@ -2,6 +2,7 @@ const express = require("express");
 const { seed } = require("./data/index");
 const {Spell} = require("./models/Spell");
 const {Wizard} = require("./models/Wizard");
+const bcrypt = require('bcrypt');
 
 const app = express();
 const port = 3011;
@@ -69,6 +70,26 @@ app.get("/spells/:id", async (req, res) => {
 app.get("/spells", async(req, res) => {
     let spell = await Spell.findAll(req.params.id);
     res.send(spell)
+});
+
+// POST /register
+// TODO - takes req.body of {username, password} and creates a new user with the hashed password
+app.post("/register", async (req, res, next) => {
+  try {
+    let { student_name, isStudent, hogwartsHouse,password } = req.body;
+    //create the salt
+    let salt = await bcrypt.genSalt(5);
+    //use bcrypt to hash the password
+    const hashedPw = await bcrypt.hash(password, salt);
+    //add user to db
+   let createdUser= await Wizard.create({ student_name, isStudent, hogwartsHouse,password: hashedPw });
+   if(createdUser){
+    res.send(`successfully created new wizard ${username}`)
+   }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 app.listen(port, () => {

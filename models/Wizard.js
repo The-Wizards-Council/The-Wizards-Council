@@ -18,7 +18,11 @@ const Wizard = database.define("wizard", {
     hogwartsHouse: {
         type: Sequelize.BOOLEAN,
         allowNull: false
-    }
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
 });
 
 module.exports = {
