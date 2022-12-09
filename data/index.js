@@ -18,7 +18,7 @@ let seed = async () => {
 
     console.log("The database is populated... Test it out using a Local Server!")
 }
-
+seed()
 module.exports = {
     seed
 }
