@@ -73,24 +73,51 @@ app.get("/spells", async(req, res) => {
 });
 
 // POST /register
-// TODO - takes req.body of {username, password} and creates a new user with the hashed password
+// TODO - takes req.body of { student_name, isStudent, hogwartsHouse,password} and creates a new user with the hashed password
 app.post("/register", async (req, res, next) => {
   try {
     let { student_name, isStudent, hogwartsHouse,password } = req.body;
     //create the salt
     let salt = await bcrypt.genSalt(5);
+   
     //use bcrypt to hash the password
     const hashedPw = await bcrypt.hash(password, salt);
+
     //add user to db
-   let createdUser= await Wizard.create({ student_name, isStudent, hogwartsHouse,password: hashedPw });
+   let createdUser= await Wizard.create( { student_name, isStudent, hogwartsHouse,password:hashedPw });
+   console.log(createdUser);
    if(createdUser){
-    res.send(`successfully created new wizard ${username}`)
+    res.send(`successfully created new wizard ${student_name}`)
    }
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
+
+app.post("/login", async (req, res, next) => {
+    try{
+      let { student_name, password } = req.body;
+      //search db and find where username matches what is passed in
+      let loginUser= await Wizard.findOne({
+         where: { student_name
+        } 
+      });
+      if(loginUser){
+        let isMatching = await bcrypt.compare(password, loginUser.password);
+        if(isMatching){
+          res.send(`successfully logged in user ${student_name}`);
+        }else{
+          res.send(401, 'incorrect username or password');
+        }
+        }
+      }catch(error){
+        console.error(error);
+        next(error);
+      }
+    });
+
+
 
 app.listen(port, () => {
     seed();
