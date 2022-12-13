@@ -1,7 +1,7 @@
 const {database} = require('../db');
 const {Spell, Wizard} = require('../models/index');
-const {spell} = require("./SpellData");
-const {wizard} = require("./WizardData");
+const {spell} = require("./spellData");
+const {wizard} = require("./wizardData");
 
 let seed = async () => {
     await database.sync({force:true});
