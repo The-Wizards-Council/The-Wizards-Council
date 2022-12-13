@@ -4,8 +4,10 @@ const { database } = require("../db");
 const Spell = database.define("spell", {
     id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         autoIncrement: true,
-        primaryKey: true
+        timeStamps:true
+       
     },
    
     spellName: {
@@ -23,5 +25,4 @@ const Spell = database.define("spell", {
 });
 
 module.exports = {
-    Spell
-}
+    Spell}

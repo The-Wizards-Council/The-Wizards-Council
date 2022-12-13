@@ -1,45 +1,62 @@
 const express = require("express");
 const { seed } = require("./data/index");
-const { Spell } = require("./models/Spell");
-const { Wizard } = require("./models/Wizard");
+
+const {Spell} = require("./models/Spell");
+const {Wizard} = require("./models/Wizard");
+const bcrypt = require('bcrypt');
+
 
 const app = express();
 const port = 3011;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//EXAMPLES ON HOW TO WRITE ROUTES
-//CRUD ROUTES FOR Wizards and Spells go here
-// Verb
-// GET - SELECT - (Searching a Resource or Querying)
-// POST - INSERT - (Creating a Resource)
-// PUT - UPDATE - (Updating a Resource)
-// DELETE - DELETE - (Deleting a Resource)
 
+  // POST /register
+// TODO - takes req.body of { student_name, isStudent, hogwartsHouse,password} and creates a new user with the hashed password
+app.post("/register", async (req, res, next) => {
+  try {
+    let { student_name, isStudent, hogwartsHouse,password } = req.body;
+    //create the salt
+    let salt = await bcrypt.genSalt(5);
+   
+    //use bcrypt to hash the password
+    const hashedPw = await bcrypt.hash(password, salt);
 
-// Noun
-// Pokemons
-// Trainers
+    //add user to db
+   let createdUser= await Wizard.create( { student_name, isStudent, hogwartsHouse,password:hashedPw });
+   console.log(createdUser);
+   if(createdUser){
+    res.send(`successfully created new wizard ${student_name}`)
+   }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
-// Thing #1 to note about Restful API Best Practices.
-// Your endpoints (the nouns) should be pluralized
+app.post("/login", async (req, res, next) => {
+    try{
+      let { student_name, password } = req.body;
+      //search db and find where username matches what is passed in
+      let loginUser= await Wizard.findOne({
+         where: { student_name
+        } 
+      });
+      if(loginUser){
+        let isMatching = await bcrypt.compare(password, loginUser.password);
+        if(isMatching){
+          res.send(`successfully logged in user ${student_name}`);
+        }else{
+          res.send(401, 'incorrect username or password');
+        }
+        }
+      }catch(error){
+        console.error(error);
+        next(error);
+      }
+    });
 
-// When you think of REQ.QUERY think of FILTERING
-// (The only thing it's used for is pagination)
-// app.get("/witches", async (req, res) => {
-//     // If you
-//     const {type} = req.query;
-//     let witch = await Witch.findAll({where: {type}});
-
-//     res.send(witch)
-// });
-
-// We have been thinking about Object Oriented Programming since Week 5.
-
-// We learned that with OOP we have the four principles:
-// 1. Inheritence
-// Objects have an IS A relationship
-   //Yohonna: Get routes for spells and wizards  
 
  //Yohonna: get all wizards
  app.get("/wizards", async(req, res) => {
@@ -69,7 +86,7 @@ app.get("/spells", async(req, res) => {
 });
 
 //Kris POST routes
-    //Kris: POST new wizards
+  //  Kris: POST new wizards
  app.post("/wizards", async(req, res, next) => {
     
   try {
@@ -79,7 +96,7 @@ app.get("/spells", async(req, res) => {
   next(error);
   }
 });
-// Kris: POST new spells 
+//Kris: POST new spells 
 app.post("/spells", async(req, res, next) => {
   try {
   const spell = await Spell.create(req.body);
@@ -90,7 +107,7 @@ app.post("/spells", async(req, res, next) => {
 });
 
 //Kris: PUT wizards
-// Update a single item to the Wizard and Spell database by id
+//Update a single item to the Wizard and Spell database by id
 app.put("/wizards/:id", async (req, res, next) => {
   try {
     await Wizard.update(req.body, {
@@ -116,7 +133,7 @@ app.put("/spells/:id", async (req, res, next) => {
 });
 
 
-// delete route done by Ahn 12/2/2022
+//delete route done by Ahn 12/2/2022
 app.delete("/wizards/:id", async (req, res) => {
   const wizard = await Wizard.findByPk(req.params.id);
   const deletedWizard = await wizard.destroy();
