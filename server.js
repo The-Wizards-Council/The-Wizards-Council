@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // TODO - takes req.body of { student_name, isStudent, hogwartsHouse,password} and creates a new user with the hashed password
 app.post("/register", async (req, res, next) => {
   try {
-    let { student_name, isStudent, hogwartsHouse,password } = req.body;
+    let { student_name, isStudent, isSuperUser, hogwartsHouse,password } = req.body;
     //create the salt
     let salt = await bcrypt.genSalt(5);
    
@@ -24,7 +24,7 @@ app.post("/register", async (req, res, next) => {
     const hashedPw = await bcrypt.hash(password, salt);
 
     //add user to db
-   let createdUser= await Wizard.create( { student_name, isStudent, hogwartsHouse,password:hashedPw });
+   let createdUser= await Wizard.create( { student_name, isStudent, isSuperUser, hogwartsHouse,password:hashedPw });
    console.log(createdUser);
    if(createdUser){
     res.send(`successfully created new wizard ${student_name}`)
