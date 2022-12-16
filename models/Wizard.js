@@ -15,6 +15,10 @@ const Wizard = database.define("wizard", {
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
+    isSuperUser: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    },
     hogwartsHouse: {
         type: Sequelize.STRING,
         allowNull: false

@@ -94,10 +94,11 @@ let authWizard = async (req, res, next) => {
     // Check the validity of the token
     const wizard = jwt.verify(token, ACCESS_TOKEN_SECRET);
     req.wizard = wizard;
+
+    console.log("req.wizard = wizard: ", wizard);
     next();
   }
 };
-
 
 // If I'm making a route to register a wizard, what would be an endpoint for that?
 // RESTful API needs to be pluralized
@@ -106,7 +107,8 @@ let authWizard = async (req, res, next) => {
 
 app.post("/wizards/register", async (req, res) => {
   // Object Deconstruction
-  const { student_name, isStudent, hogwartsHouse, password } = req.body;
+  const { student_name, isStudent, isSuperUser, hogwartsHouse, password } =
+    req.body;
 
   console.log("The student_name: ", student_name);
   console.log("The password: ", password);
@@ -119,6 +121,7 @@ app.post("/wizards/register", async (req, res) => {
   let createdWizard = await Wizard.create({
     student_name,
     isStudent,
+    isSuperUser,
     hogwartsHouse,
     password: hashedPw,
   });
@@ -147,8 +150,7 @@ app.post("/wizards/login", authWizard, async (req, res) => {
   let isAuthenticated = bcrypt.compareSync(password, foundWizard.password);
 
   if (isAuthenticated) {
-    // It True, the wizard successfully logged in.
-
+    // If True, the wizard successfully logged in.
     // I want to authorize your permissions now
 
     const { id, student_name } = foundWizard;
@@ -234,19 +236,48 @@ app.put("/spells/:id", async (req, res, next) => {
   }
 });
 
-//delete route done by Ahn 12/2/2022
-app.delete("/wizards/:id", async (req, res) => {
-  const wizard = await Wizard.findByPk(req.params.id);
-  const deletedWizard = await wizard.destroy();
-  res.send(deletedWizard);
+// Ahn: Delete wizard route 12/2/2022
+// Ahn: Delete wizard only by the authorized wizard who is a student  12/15/2022
+
+app.delete("/wizards/:id", authWizard, async (req, res) => {
+  const wizard = req.wizard;
+  const { isStudent } = req.body;
+  console.log("wizard: ", wizard);
+
+  try {
+    const wizardToDelete = await Wizard.findByPk(req.params.id);
+    if (wizard.id == req.params.id && isStudent) {
+      const deletedWizard = await wizardToDelete.destroy();
+      res.send(deletedWizard);
+    } else {
+      res.status(401).send("Not Authorized!");
+    }
+  } catch (error) {
+    next(error);
+  }
 });
 
-app.delete("/spells/:id", async (req, res) => {
-  const spell = await Spell.findByPk(req.params.id);
-  const deletedSpell = await spell.destroy();
-  res.send(deletedSpell);
-});
+// Ahn: Delete spell route 12/2/2022
+// Ahn: Delete spell only by the authorized wizard who is a student  12/15/2022
 
+app.delete("/spells/:id", authWizard, async (req, res) => {
+  // const wizard = req.wizard;
+
+  const { isStudent } = req.body;
+  if (isStudent) {
+    try {
+      const spell = await Spell.findByPk(req.params.id);
+      console.log("spell: ", spell);
+
+      const deletedSpell = await spell.destroy();
+      res.send(deletedSpell);
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    res.status(401).send("Not Authorized!");
+  }
+});
 
 app.listen(PORT, () => {
   seed();
