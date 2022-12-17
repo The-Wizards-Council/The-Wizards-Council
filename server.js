@@ -183,8 +183,8 @@ app.put("/spells/:id", async (req, res, next) => {
   }
 });
 
-// Ahn: Delete route 12/2/2022
-// Ahn: Add authorization 12/15
+// Ahn: Delete wizard route 12/2/2022
+// Ahn: Delete wizard only by the authorized loginUser who is a student  12/15/2022
 app.delete("/wizards/:id", authUser, async (req, res) => {
   const wizard = req.wizard;
   const { isStudent } = req.body;
@@ -204,11 +204,30 @@ app.delete("/wizards/:id", authUser, async (req, res) => {
   }
 });
 
-app.delete("/spells/:id", async (req, res) => {
-  const spell = await Spell.findByPk(req.params.id);
-  const deletedSpell = await spell.destroy();
-  res.send(deletedSpell);
+// Ahn: Delete wizard route 12/2
+// Ahn: Delete spell only by the authorized loginUser who is a student  12/15
+app.delete("/spells/:id", authUser, async (req, res) => {
+  const { isStudent } = req.body;
+  if (isStudent) {
+    try {
+      const spell = await Spell.findByPk(req.params.id);
+      console.log("spell: ", spell);
+
+      const deletedSpell = await spell.destroy();
+      res.send(deletedSpell);
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    res.status(401).send("Not Authorized!");
+  }
 });
+
+//   const spell = await Spell.findByPk(req.params.id);
+//   const deletedSpell = await spell.destroy();
+//   res.send(deletedSpell);
+// });
+
 app.listen(PORT, () => {
   seed();
   console.log(`App listening on http://localhost:${PORT}`);
