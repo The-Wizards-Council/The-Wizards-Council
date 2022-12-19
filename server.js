@@ -69,7 +69,12 @@ app.get("/wizards", async (req, res) => {
 //Yohonna:get wizards by id
 app.get("/wizards/:id", async (req, res) => {
   console.log(req.params.id);
-  let wizard = await Wizard.findByPk(req.params.id);
+  let wizard = await Wizard.findByPk(req.params.id, {
+    include: {
+      model: Spell,
+      as: "spells",
+    },
+  });
   res.send(wizard);
 });
 
