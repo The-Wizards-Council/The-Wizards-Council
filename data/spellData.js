@@ -47,12 +47,14 @@ const spell = [
     spellName: "Confundo",
     description: "Causes confusion",
     itemType: "Spell",
+    wizardId: 3,
   },
   {
     id: 8,
     spellName: "Deletrius",
     description: "Ends display from prior incantato charm",
     itemType: "Counter charm",
+    wizardId: 3,
   },
   {
     id: 9,
@@ -60,12 +62,14 @@ const spell = [
     description:
       "The Descendo jinx is used to knock over piles of things. It is apparently not an instantaneous action; using it on a tall pile of stuff, for instance, will cause the pile to start to fall, but it can still be stopped with a properly timed Finite charm.",
     itemType: "Jinx/Charm",
+    wizardId: 3,
   },
   {
     id: 10,
     spellName: "Engorgio",
     description: "Enlarges items",
     itemType: "Spell",
+    wizardId: 3,
   },
   {
     id: 11,
@@ -73,6 +77,7 @@ const spell = [
     description:
       "Patronus charm can appear as simply white vapour or if more advanced - as a silvery-white animal shape. Animal shaped patronus are called a corporeal Patronus. Used to ward off Dementors which guard Azkaban.",
     itemType: "Charm",
+    wizardId: 3,
   },
   {
     id: 12,
