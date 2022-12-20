@@ -9,10 +9,11 @@ let seed = async () => {
   //loops through all wizard entries starts at i, then selects password within i. 
 for(let i=0;i<=wizard.length-1;i++){
  let password= wizard[i].password
- //use bcrypt to hash the password and reassingn in wizardData
+ //use bcrypt to hash the password and reassigns in wizardData
  let salt = await bcrypt.genSalt(5);
   wizard[i].password = await bcrypt.hash(password, salt);
 }
+//after reassigning in Wizard data, use bulk create to push this to db
   // Create the entries for them in their Models
   let wizardEntries = await Wizard.bulkCreate(wizard);
  let spellEntries = await Spell.bulkCreate(spell);
