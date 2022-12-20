@@ -18,14 +18,24 @@ app.use(express.urlencoded({ extended: true }));
 
 //Yohonna: get all wizards
 app.get("/wizards", async (req, res) => {
-  let wizard = await Wizard.findAll(req.params.id);
+  let wizard = await Wizard.findAll(req.params.id, {
+    include: {
+      model: Spell,
+      as: "spells",
+    },
+  });
   res.send(wizard);
 });
 
 //Yohonna:get wizards by id
 app.get("/wizards/:id", async (req, res) => {
   console.log(req.params.id);
-  let wizard = await Wizard.findByPk(req.params.id);
+  let wizard = await Wizard.findByPk(req.params.id, {
+    include: {
+      model: Spell,
+      as: "spells",
+    },
+  });
   res.send(wizard);
 });
 
@@ -55,20 +65,19 @@ const authUser = async (req, res, next) => {
     console.log("The user isn't authorized...");
     next(); // move on to the next function
   } else {
-  // Array Deconstruction, we don't need the Bearer part, only need token
-  const [, token] = auth.split(" "); // spliting the authentication string by space
-  console.log("Token: ", token);
-  if(token == null) return res.sendStatus(401);
+    // Array Deconstruction, we don't need the Bearer part, only need token
+    const [, token] = auth.split(" "); // spliting the authentication string by space
+    console.log("Token: ", token);
+    if (token == null) return res.sendStatus(401);
 
-  // Check the validity of the token
-  jwt.verify(token, ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
-}
-}
-
+    // Check the validity of the token
+    jwt.verify(token, ACCESS_TOKEN_SECRET, (err, user) => {
+      if (err) return res.sendStatus(403);
+      req.user = user;
+      next();
+    });
+  }
+};
 
 // Yohonna: POST /register
 // TODO - takes req.body of { student_name, isStudent, isSuperUser, hogwartsHouse,password} and creates a new user with the hashed password
@@ -211,8 +220,8 @@ app.delete("/wizards/:id", authUser, async (req, res, next) => {
     const userToDelete = await Wizard.findByPk(req.params.id);
     // Only authorized and isStudent user can delete
     // if (user.id == req.params.id && isStudent) {
-      const deletedUser = await userToDelete.destroy();
-      res.send(deletedUser);
+    const deletedUser = await userToDelete.destroy();
+    res.send(deletedUser);
     // } else {
     //   res.status(401).send("Not Authorized!");
     // }
@@ -238,7 +247,6 @@ app.delete("/spells/:id", authUser, async (req, res, next) => {
     next(error);
   }
 });
-
 
 app.listen(PORT, () => {
   seed();
