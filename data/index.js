@@ -1,24 +1,24 @@
-const {database} = require('../db');
-const {Spell, Wizard} = require('../models/index');
-const {spell} = require("./SpellData");
-const {wizard} = require("./WizardData");
+const { database } = require("../db");
+const { Spell, Wizard } = require("../models/index");
+const { spell } = require("./spellData");
+const { wizard } = require("./wizardData");
 
 let seed = async () => {
-    await database.sync({force:true});
+  await database.sync({ force: true });
 
-        // Create the entries for them in their Models
-    let spellEntries = await Spell.bulkCreate(spell);
-    let wizardEntries = await Wizard.bulkCreate(wizard);
-//hash passwords before bulk create 
-    let firstSpell = await spellEntries[0];
-    let secondWizard = await wizardEntries[1];
+  // Create the entries for them in their Models
+  let wizardEntries = await Wizard.bulkCreate(wizard);
+  let spellEntries = await Spell.bulkCreate(spell);
 
-    console.log("Test 1: ", firstSpell);
-    console.log("Test 2: ", secondWizard);
+  let firstSpell = await spellEntries[0];
+  let secondWizard = await wizardEntries[1];
 
-    console.log("The database is populated... Test it out using a Local Server!")
-}
+  console.log("Test 1: ", firstSpell);
+  console.log("Test 2: ", secondWizard);
+
+  console.log("The database is populated... Test it out using a Local Server!");
+};
 //seed()
 module.exports = {
-    seed
-}
+  seed,
+};
