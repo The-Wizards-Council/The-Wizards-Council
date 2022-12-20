@@ -9,7 +9,7 @@ let seed = async () => {
         // Create the entries for them in their Models
     let spellEntries = await Spell.bulkCreate(spell);
     let wizardEntries = await Wizard.bulkCreate(wizard);
-
+//hash passwords before bulk create 
     let firstSpell = await spellEntries[0];
     let secondWizard = await wizardEntries[1];
 

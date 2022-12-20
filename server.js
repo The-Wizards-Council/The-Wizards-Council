@@ -149,3 +149,8 @@ app.listen(port, () => {
   seed();
   console.log(`App listening on http://localhost:${port}`);
 });
+
+
+//if registered they can log in and view all spells
+//if a student then they can update/add/delete spells 
+//if not..."Not authorized"
