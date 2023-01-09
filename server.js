@@ -81,7 +81,7 @@ const authUser = async (req, res, next) => {
 
 // Yohonna: POST /register
 // TODO - takes req.body of { student_name, isStudent, isSuperUser, hogwartsHouse,password} and creates a new user with the hashed password
-app.post("/wizards/register", async (req, res, next) => {
+app.post("/register", async (req, res, next) => {
   try {
     let { student_name, isStudent, isSuperUser, hogwartsHouse, password } =
       req.body;
@@ -119,7 +119,7 @@ app.post("/wizards/register", async (req, res, next) => {
 
 // Yohonna: Login
 // Ahn: Add middleware as the second argument, authorization
-app.post("/wizards/login", authUser, async (req, res, next) => {
+app.post("/login", authUser, async (req, res, next) => {
   try {
     let { student_name, password } = req.body;
     let loginUser = await Wizard.findOne({
@@ -255,5 +255,5 @@ app.listen(PORT, () => {
 
 
 //if registered they can log in and view all spells
-//if a student then they can update/add/delete spells 
+//if a student then they can update/add/delete spells
 //if not..."Not authorized"
